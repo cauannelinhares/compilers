@@ -1,0 +1,52 @@
+Estrutura de código em Pascal
+
+program <nomeDoPrograma>;
+
+const
+	<nomeDaConstante> = <valor>;
+
+#variáveis globais
+var 
+	<nomeDaVar> : <tipoDaVar>;
+	<nome1>, <nome2>, ... : <tipoVars>;
+
+#Idnetificadores -> começam com letras ou _, podem conter números
+
+#função void
+procedure <nomeDoProcedure> (<par1>:<tipo>; <par2>:<tipo>);
+#declaração de variáveis locais (se houver)
+begin
+	#comandos
+end;
+
+#função com retorno
+function <nomeDaFuncao> (<listaDeParametros>):<tipo>;
+#declaração de váriáveis locais (se houver)
+begin
+	#comandos
+end;
+
+begin
+
+	#comandos main
+
+	if <condition> then
+		#comandos;
+		#comando
+	else
+		#comandos;
+		#comando
+
+	while <condition> do
+		begin
+			#comandos;
+		end;
+
+	#while sem begin-end
+	while <condition> do
+		#comando;
+
+	#Comandos de Escrita
+	writeln('<mensagem>', <nomeDeVar>, '<mensagem>', <nomeDeVar>)
+
+end.

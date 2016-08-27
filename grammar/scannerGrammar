@@ -1,0 +1,30 @@
+Grmática Léxica - Pascal
+
+
+ID -> Letter (Letter|Digit)*
+
+NUM -> Digit+
+
+BOOL -> true
+		|false
+
+Letter -> [A-Z a-z]
+
+Digit -> [0-9]
+
+Type -> boolean
+	    |Integer
+
+Comment -> # graphic* EOL
+
+RelationalOp -> = | >= | <= | <> 
+
+SingleOp -> + | -
+
+ComplexOp -> * | /
+
+tokens -> Comment | Type | Letter | Digit | ID | NUM | Type | BOOL |
+		  RelationalOp | SingleOp | ComplexOp | ';' | 'EOT' | 'EOL' |
+		  'program' | 'if' | 'then' | 'else' | 'while' | 'do' | 'begin' |
+		  'end' | ',' | '(' | ')' | 'function' | 'procedure' | 'var' | ':=' |
+		  'break' | 'continue' | 'write' | '.' | ':'

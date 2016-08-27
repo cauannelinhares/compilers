@@ -1,0 +1,63 @@
+Gramática Sintática - Pascal
+
+
+program::= 'program' ID ';' COMD* CommandBlock '.'
+
+COMD::= (DecFunc
+	    |DecVar
+	    |DecProc) ';' 
+
+DecFunc::= 'function' ID '(' LP* ')' ':' Type ';'
+		   CommandBlock 
+
+DecProc::= 'procedure' ID '(' LP* ')' ';'
+		   CommandBlock
+
+DecVar::= 'var' LP 
+
+LP::= ID (',' ID)* ':' Type (';' LP)*
+
+CommandBlock::= 'begin' CommandBody* 'end'
+
+CommandBody::= (DecVar
+			   |ID ':=' Expression
+			   |CallFuncProc
+			   |IfCommand
+			   |WhileCommand
+			   |IDeviation
+			   |WriteCommand) ';'
+
+CallFuncProc::= ID '(' LA ')'
+
+IfCommand::= 'if' Expression 'then' CommandBlock ('else' CommandBlock )?
+
+WhileCommand::= 'while' Expression 'do' CommandBlock 
+
+IDeviation::= 'break' 
+			  |'continue' 
+
+WriteCommand::= 'write' '(' Expression ')'	
+
+LA::= Expression ( ',' Expression)*
+
+Expression::= ArithmeticEx (RelationalOp ArithmeticEx)?
+
+ArithmeticEx::= ArithmeticEx SimpleOp Term
+				|Term
+
+Term::= Term ComplexOp Factor
+	    |Factor
+
+Factor::= ID
+		  |NUM
+		  |CallFuncProc
+		  |'(' ArithmeticEx ')'
+		  |BOOL
+
+
+
+
+
+
+
+
