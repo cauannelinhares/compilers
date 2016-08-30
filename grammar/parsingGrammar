@@ -42,11 +42,9 @@ LA::= Expression ( ',' Expression)*
 
 Expression::= ArithmeticEx (RelationalOp ArithmeticEx)?
 
-ArithmeticEx::= ArithmeticEx SimpleOp Term
-				|Term
+ArithmeticEx::= Term (SimpleOp Term)*
 
-Term::= Term ComplexOp Factor
-	    |Factor
+Term::= Factor (ComplexOp Factor)*
 
 Factor::= ID
 		  |NUM
