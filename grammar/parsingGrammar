@@ -7,10 +7,10 @@ COMD::= (DecFunc
 	    |DecVar
 	    |DecProc) ';' 
 
-DecFunc::= 'function' ID '(' LP* ')' ':' Type ';'
+DecFunc::= 'function' ID '(' LP? ')' ':' Type ';'
 		   CommandBlock 
 
-DecProc::= 'procedure' ID '(' LP* ')' ';'
+DecProc::= 'procedure' ID '(' LP? ')' ';'
 		   CommandBlock
 
 DecVar::= 'var' LP 
@@ -20,14 +20,11 @@ LP::= ID (',' ID)* ':' Type (';' LP)*
 CommandBlock::= 'begin' CommandBody* 'end'
 
 CommandBody::= (DecVar
-			   |ID ':=' Expression
-			   |CallFuncProc
+			   |ID (:= Expression | '(' LA ')' )
 			   |IfCommand
 			   |WhileCommand
 			   |IDeviation
 			   |WriteCommand) ';'
-
-CallFuncProc::= ID '(' LA ')'
 
 IfCommand::= 'if' Expression 'then' CommandBlock ('else' CommandBlock )?
 
@@ -46,9 +43,8 @@ ArithmeticEx::= Term (SimpleOp Term)*
 
 Term::= Factor (ComplexOp Factor)*
 
-Factor::= ID
+Factor::= ID ( '(' LA ')' )?
 		  |NUM
-		  |CallFuncProc
 		  |'(' ArithmeticEx ')'
 		  |BOOL
 
